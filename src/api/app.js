@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 const express = require('express');
+const heroesRouter = require('./routes/heroesRouter');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 class App {
   constructor() {
     this.app = express();
     this.config();
+    this.routes();
     this.errorHandler();
   }
 
@@ -19,6 +21,10 @@ class App {
 
     this.app.use(accessControl);
     this.app.use(express.json());
+  }
+
+  routes() {
+    this.app.use('/heroes', heroesRouter);
   }
 
   errorHandler() {
