@@ -2,14 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.js",
+  "main": "./src/api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "prestart": "npm run db:reset",
     "start": "node .",
     "predev": "npm run db:reset",
-    "dev": "nodemon ./src/server.js",
+    "dev": "nodemon ./src/api/server.js",
     "lint": "eslint ./src --ext .js"
   },
   "keywords": [],
