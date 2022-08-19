@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 const express = require('express');
+const errorMiddleware = require('./middlewares/errorMiddleware');
 
 class App {
   constructor() {
     this.app = express();
     this.config();
+    this.errorHandler();
   }
 
   config() {
@@ -19,6 +21,9 @@ class App {
     this.app.use(express.json());
   }
 
+  errorHandler() {
+    this.app.use(errorMiddleware);
+  }
 
   start(PORT) {
     this.app.use(express.json());
