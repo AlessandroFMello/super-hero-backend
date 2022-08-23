@@ -7,6 +7,7 @@ class UniversesController {
     this.getAll = this.getAll.bind(this);
     this.getAllHeroesFromUniverse = this.getAllHeroesFromUniverse.bind(this);
     this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
   }
 
   async getAll(_req, res) {
@@ -37,6 +38,18 @@ class UniversesController {
   async create(req, res) {
     const { code, universe, message } = await this.universesService
       .create(req.body);
+
+    if (!universe) {
+      return res.status(code).json({ message });
+    }
+
+    return res.status(code).json(universe);
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+
+    const { code, universe, message } = await this.universesService.update(id, req.body);
 
     if (!universe) {
       return res.status(code).json({ message });
