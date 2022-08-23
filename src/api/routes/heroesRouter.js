@@ -21,4 +21,6 @@ router.put(
   heroesController.update,
 );
 
+router.delete('/:id', heroesController.delete);
+
 module.exports = router;
