@@ -42,7 +42,7 @@ class HeroesService {
     });
 
     if (getHeroByName) {
-      return { code: 404, message: this.ALREADY_EXIST };
+      return { code: 400, message: this.ALREADY_EXIST };
     }
 
     const newHero = {

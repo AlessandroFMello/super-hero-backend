@@ -21,7 +21,7 @@ const Universe = (sequelize, DataTypes) => {
   universe.associate = (models) => {
     universe.hasMany(
       models.Hero,
-      { foreignKey: 'universe', as: 'heroUniverse' },
+      { foreignKey: 'universe', as: 'universeHeroes' },
     );
   };
 
