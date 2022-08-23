@@ -21,4 +21,6 @@ router.put(
   universesController.update,
 );
 
+router.delete('/:id', universesController.delete);
+
 module.exports = router;
