@@ -5,6 +5,7 @@ class HeroesController {
     this.heroesService = new HeroesService();
 
     this.getAll = this.getAll.bind(this);
+    this.getById = this.getById.bind(this);
   }
 
   async getAll(_req, res) {
@@ -16,6 +17,19 @@ class HeroesController {
 
     return res.status(code).json(allHeroes);
   }
+
+  async getById(req, res) {
+    const { id } = req.params;
+
+    const { code, hero, message } = await this.heroesService.getById(id);
+
+    if (!hero) {
+      return res.status(code).json({ message });
+    }
+
+    return res.status(code).json(hero);
+  }
+
 }
 
 module.exports = HeroesController;
