@@ -8,4 +8,10 @@ router.get('/', universesController.getAll);
 
 router.get('/:id', universesController.getAllHeroesFromUniverse);
 
+router.post(
+  '/',
+  universeValidationMiddleware,
+  universesController.create,
+);
+
 module.exports = router;
