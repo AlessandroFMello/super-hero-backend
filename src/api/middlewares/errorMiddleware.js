@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // eslint-disable-next-line no-unused-vars
 const errorMiddleware = (err, _req, res, _next) => {
   console.log(err);
