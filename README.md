@@ -23,7 +23,7 @@
 
 **Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
 
-**Faça essas configurações também para as variáveis de ambiente usadas nesses arquivo:**
+**Faça essas configurações também para as variáveis de ambiente usadas neste arquivo:**
 
 `super-hero-backend/src/database/config/config.js`
 
