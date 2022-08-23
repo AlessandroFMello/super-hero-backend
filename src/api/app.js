@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const express = require('express');
 const heroesRouter = require('./routes/heroesRouter');
+const universesRouter = require('./routes/universesRouter');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 class App {
@@ -25,6 +26,7 @@ class App {
 
   routes() {
     this.app.use('/heroes', heroesRouter);
+    this.app.use('/universes', universesRouter);
   }
 
   errorHandler() {
