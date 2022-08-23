@@ -67,6 +67,24 @@ const options = {
 
 4. a variável DB_PORT define em qual porta o servidor irá rodar localmente. Por padrão ela está configurada para rodar o servidor na porta 3001
 
+
+## Você está pronto para rodar a aplicação:
+Verifique se o MySQL está ativo:
+```bash
+sudo systemctl status mysql
+```
+
+Se não estiver ativo inicie com o comando:
+```bash
+sudo systemctl start mysql
+```
+Agora basta iniciar o servidor:
+```bash
+npm run dev
+```
+
+**Se não ocorreu nenhum erro e apareceu a mensamen "Server started on port 3001"(ou a porta que você escolheu) então você já pode acessar as rotas locais**
+
 ### Rotas da API (localmente)
 
 * [http://localhost:3001/heroes](http://localhost:3001/heroes) lista todos os super-heróis e seus respectivos universos
