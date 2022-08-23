@@ -6,4 +6,6 @@ const heroesController = new HeroesController();
 
 router.get('/', heroesController.getAll);
 
+router.get('/:id', heroesController.getById);
+
 module.exports = router;
