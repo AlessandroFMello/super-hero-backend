@@ -6,6 +6,7 @@ class HeroesController {
 
     this.getAll = this.getAll.bind(this);
     this.getById = this.getById.bind(this);
+    this.create = this.create.bind(this);
   }
 
   async getAll(_req, res) {
@@ -30,6 +31,16 @@ class HeroesController {
     return res.status(code).json(hero);
   }
 
+  async create(req, res) {
+    const { code, hero, message } = await this.heroesService
+      .create(req.body);
+
+    if (!hero) {
+      return res.status(code).json({ message });
+    }
+
+    return res.status(code).json(hero);
+  }
 }
 
 module.exports = HeroesController;
