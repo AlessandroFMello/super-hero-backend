@@ -15,4 +15,12 @@ router.post(
   heroesController.create,
 );
 
+router.put(
+  '/:id',
+  heroValidationMiddleware,
+  heroesController.update,
+);
+
+router.delete('/:id', heroesController.delete);
+
 module.exports = router;

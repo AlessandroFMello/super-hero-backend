@@ -13,8 +13,8 @@ const loginSchemas = Joi.object({
   universeId: Joi.number().required().empty()
     .messages({
       'any.required': error400,
-      'string.empty': error400,
-      'string.base': '400|UniverseId must be a string',
+      'number.empty': error400,
+      'number.base': '400|UniverseId must be a number',
     }),
   imageUrl: Joi.string().required().empty()
     .messages({

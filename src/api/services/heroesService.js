@@ -11,6 +11,8 @@ class HeroesService {
     this.getAll = this.getAll.bind(this);
     this.getById = this.getById.bind(this);
     this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   async getAll() {
@@ -54,6 +56,36 @@ class HeroesService {
     if (!hero) return { code: 400, message: 'Something went wrong, hero not created' };
 
     return { code: 201, hero: hero.dataValues };
+  }
+
+  async update(id, heroData) {
+    const findHero = await this.heroModel.findOne({ where: { id } });
+
+    if (!findHero) return { code: 404, message: this.NOT_FOUND };
+
+    const updatedHero = {
+      name: heroData.name,
+      universe: heroData.universeId,
+      image: heroData.imageUrl,
+    };
+
+    const hero = await this.heroModel.update(updatedHero, { where: { id } });
+
+    if (!hero) return { code: 401, message: 'Hero not updated' };
+
+    return { code: 200, hero };
+  }
+
+  async delete(id) {
+    const findHero = await this.heroModel.findOne({ where: { id } });
+
+    if (!findHero) return { code: 404, message: this.NOT_FOUND };
+
+    const hero = await this.heroModel.destroy({ where: { id } });
+
+    if (!hero) return { code: 401, message: 'Hero not deleted' };
+
+    return { code: 200 };
   }
 }
 
