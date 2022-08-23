@@ -12,6 +12,7 @@ class UniversesService {
     this.getAllHeroesFromUniverse = this.getAllHeroesFromUniverse.bind(this);
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   async getAll() {
@@ -69,6 +70,17 @@ class UniversesService {
     return { code: 200, universe };
   }
 
+  async delete(id) {
+    const findHero = await this.universeModel.findOne({ where: { id } });
+
+    if (!findHero) return { code: 404, message: this.NOT_FOUND };
+
+    const hero = await this.universeModel.destroy({ where: { id } });
+
+    if (!hero) return { code: 401, message: 'Universe not deleted' };
+
+    return { code: 200 };
+  }
 }
 
 module.exports = UniversesService;
