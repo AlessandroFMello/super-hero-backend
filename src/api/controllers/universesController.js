@@ -8,6 +8,7 @@ class UniversesController {
     this.getAllHeroesFromUniverse = this.getAllHeroesFromUniverse.bind(this);
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   async getAll(_req, res) {
@@ -58,6 +59,17 @@ class UniversesController {
     return res.status(code).json(universe);
   }
 
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const { code, message } = await this.universesService.delete(id);
+
+    if (message) {
+      return res.status(code).json({ message });
+    }
+
+    return res.status(code).end();
+  }
 }
 
 module.exports = UniversesController;
