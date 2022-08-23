@@ -59,7 +59,7 @@ const options = {
 **Com elas que iremos conseguir conectar ao banco do avaliador automático**
 
 ***Instruções***
-1. Renomeie o arquivo [super-hero-backend/.env.example](super-hero-backend/.env.example) para .env
+1. Renomeie o arquivo [super-hero-backend/.env.example](.env.example/) para .env
 
 2. Altere as variáveis DB_USER e DB_PASS para o seus respectivos usuário e senha do MySQL
 
