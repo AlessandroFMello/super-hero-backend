@@ -12,6 +12,7 @@ class HeroesService {
     this.getById = this.getById.bind(this);
     this.create = this.create.bind(this);
     this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   async getAll() {
@@ -75,6 +76,17 @@ class HeroesService {
     return { code: 200, hero };
   }
 
+  async delete(id) {
+    const findHero = await this.heroModel.findOne({ where: { id } });
+
+    if (!findHero) return { code: 404, message: this.NOT_FOUND };
+
+    const hero = await this.heroModel.destroy({ where: { id } });
+
+    if (!hero) return { code: 401, message: 'Hero not deleted' };
+
+    return { code: 200 };
+  }
 }
 
 module.exports = HeroesService;
