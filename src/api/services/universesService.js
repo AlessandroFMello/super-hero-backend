@@ -26,7 +26,7 @@ class UniversesService {
   async getAllHeroesFromUniverse(selectedUniverseId) {
     const findAllHeroes = await this.universeModel.findOne({
       where: { id: selectedUniverseId },
-      include: { model: Hero, as: 'heroUniverse' },
+      include: { model: Hero, as: 'universeHeroes' },
     });
 
     if (!findAllHeroes) return { code: 404, message: this.NOT_FOUND };
