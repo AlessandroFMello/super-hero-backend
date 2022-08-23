@@ -5,7 +5,7 @@ class HeroesService {
   constructor() {
     this.heroModel = Hero;
 
-    this.NOT_FOUND = 'Product not found';
+    this.NOT_FOUND = 'Hero not found';
 
     this.getAll = this.getAll.bind(this);
   }
