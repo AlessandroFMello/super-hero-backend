@@ -11,6 +11,7 @@ class UniversesService {
     this.getAll = this.getAll.bind(this);
     this.getAllHeroesFromUniverse = this.getAllHeroesFromUniverse.bind(this);
     this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
   }
 
   async getAll() {
@@ -50,6 +51,22 @@ class UniversesService {
     if (!universe) return { code: 400, message: 'Something went wrong, universe not created' };
 
     return { code: 201, universe: universe.dataValues };
+  }
+
+  async update(id, universeData) {
+    const findUniverse = await this.universeModel.findOne({ where: { id } });
+
+    if (!findUniverse) return { code: 404, message: this.NOT_FOUND };
+
+    const updatedUniverse = {
+      universe: universeData.universe,
+    };
+
+    const universe = await this.universeModel.update(updatedUniverse, { where: { id } });
+
+    if (!universe) return { code: 401, message: 'Universe not updated' };
+
+    return { code: 200, universe };
   }
 
 }
