@@ -6,9 +6,11 @@ class HeroesService {
     this.heroModel = Hero;
 
     this.NOT_FOUND = 'Hero not found';
+    this.ALREADY_EXIST = 'Hero already exists';
 
     this.getAll = this.getAll.bind(this);
     this.getById = this.getById.bind(this);
+    this.create = this.create.bind(this);
   }
 
   async getAll() {
@@ -32,6 +34,27 @@ class HeroesService {
     return { code: 200, hero: findHeroById };
   }
 
+  async create(heroData) {
+    const getHeroByName = await this.heroModel.findOne({
+      where: { name: heroData.name },
+    });
+
+    if (getHeroByName) {
+      return { code: 404, message: this.ALREADY_EXIST };
+    }
+
+    const newHero = {
+      name: heroData.name,
+      universe: heroData.universeId,
+      image: heroData.imageUrl,
+    };
+
+    const hero = await this.heroModel.create(newHero);
+
+    if (!hero) return { code: 400, message: 'Something went wrong, hero not created' };
+
+    return { code: 201, hero: hero.dataValues };
+  }
 }
 
 module.exports = HeroesService;
