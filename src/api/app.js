@@ -29,6 +29,10 @@ class App {
     this.app.use('/universes', universesRouter);
   }
 
+  getApp() {
+    return this.app;
+  }
+
   errorHandler() {
     this.app.use(errorMiddleware);
   }
